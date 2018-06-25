@@ -1,7 +1,11 @@
 import Vue from 'vue'
-import App from './App.vue'
+import geoStructure from "./geostructure";
+import geoItem from './geoitem'
 
-new Vue({
-  el: '#app',
-  render: h => h(App)
-});
+Vue.productionTip = false;
+
+Vue.component('geoStructure', geoStructure);
+Vue.component('geoItem',geoItem);
+
+
+

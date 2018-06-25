@@ -1,11 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>common-economy</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script src="./dist/build.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Collect_Shopping</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./lib/http_code.jquery.com_jquery-2.0.0.js"></script>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="./lib/bootstrap-4.1.1-dist/js/bootstrap.bundle.js"></script>
+    <script src="./lib/bootstrap-4.1.1-dist/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="./lib/http_ajax.googleapis.com_ajax_libs_jqueryui_1.10.2_jquery-ui.js">
+        $.widget.bridge('uitooltip', $.ui.tooltip);
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+
+    <link rel="stylesheet" href="./lib/tether-1.3.3/dist/css/tether.min.css">
+    <link rel="stylesheet" href="./lib/bootstrap-4.1.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/bootstrap-4.1.1-dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="./lib/bootstrap-4.1.1-dist/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+        <ul class="nav nav-pills ">
+          <li class="nav-item"><a class="nav-linkactive " href="./index.html">Main</a></li>
+          <li class="nav-item"><a class="nav-link" href="./src/users_orders.html">User orders</a></li>
+          <li class="nav-item "><a class="nav-link " href="./src/sites.html">Sites</a></li>
+          <li class="nav-item" ><a class="nav-link" href="">Delivery points</a></li>
+          <li class="nav-item" ><a class="nav-link" href="./src/Geography.html">Geography</a></li>
+          <li class="nav-item" ><a class="nav-link" href="./src/Geo_structure.html">Geo-Structure</a></li>
+        </ul>
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+                    <div class="col-lg-6 "><span> User name : </span><span id="user_name">{{ name_value }}</span></div>
+                    <div class="col-lg-6"><span> User ID :</span><span id="user_ID"> {{ ID_value }}</span> </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="col-lg-12">
+            <div class="row">
+
+            </div>
+        </div>
+</div>
+
+
+<script>
+
+    Vue.productionTip = false;
+
+    let user_name;
+
+    user_name = new Vue({
+        el: '#user_name',
+        data: {
+            name_value:""
+        }
+    });
+
+    user_name.name_value = "Vladimir";
+
+
+    let user_ID;
+    user_ID = new Vue({
+        el: '#user_ID',
+        data: {
+            ID_value:""
+        }
+    });
+
+    user_ID.ID_value = '12345';
+
+
+
+</script>
+</body>
+
 </html>
