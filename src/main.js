@@ -4,8 +4,7 @@ import geoItem from './geoitem'
 
 Vue.productionTip = false;
 
-Vue.component('geoStructure', geoStructure);
-Vue.component('geoItem',geoItem);
-
+Vue.component('geo-structure', geoStructure);
+Vue.component('geo-item', geoItem);
 
 
