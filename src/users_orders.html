@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Collect_Shopping</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="http_code.jquery.com_jquery-2.0.0.js"></script>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="bootstrap-4.1.1-dist/js/bootstrap.bundle.js"></script>
+    <script src="bootstrap-4.1.1-dist/js/bootstrap.js"></script>
+
+    <script type="text/javascript" src="./http_ajax.googleapis.com_ajax_libs_jqueryui_1.10.2_jquery-ui.js">
+        $.widget.bridge('uitooltip', $.ui.tooltip);
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+
+    <link rel="stylesheet" href="tether-1.3.3/dist/css/tether.min.css">
+    <link rel="stylesheet" href="bootstrap-4.1.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-4.1.1-dist/css/bootstrap-grid.css">
+    <link rel="stylesheet" href="bootstrap-4.1.1-dist/css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            <ul class="nav nav-pills ">
+                <li class="nav-item"><a class="nav-link" href="index.html">Main</a></li>
+                <li class="nav-item"><a class="nav-link active" href="users_orders.html">User orders</a></li>
+                <li class="nav-item" ><a class="nav-link" href="sites.html">Sites</a></li>
+                <li class="nav-item" ><a class="nav-link" href="#">Delivery points</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+               <div class="col-lg-6 "><span> User name : </span><span id="user_name">{{ name_value }}</span></div>
+               <div class="col-lg-6"><span> User ID :</span><span id="user_ID"> {{ ID_value }}</span> </div>
+            </div>
+        </div>
+    </div>
+        <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-12">
+                  <span>Delivery points : </span><span id="delivery_list">{{delivery_points}}</span>
+              </div>
+              <div class="col-lg-12">
+                  <table class="table table-responsive table-bordered" id="wish_table" >
+                      <thead class="thead">
+                      <tr class="tr">
+                          <th class="th">ID order</th>
+                          <th class="th">Site</th>
+                          <th class="th">Number items</th>
+                          <th class="th">Weigth, kg</th>
+                          <th class="th">Currency</th>
+                          <th class="th">Sum</th>
+                          <th class="th">Standart delivery</th>
+                          <th class="th">Saving</th>
+                          <th class="th">Sum total</th>
+                          <th class="th">Delivery point</th>
+                          <th class="th">Common order</th>
+                          <th class="th">Status</th>
+                          <th class="th">Action</th>
+                      </tr>
+                      </thead>
+                  </table>
+
+              </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    Vue.productionTip = false;
+
+    let user_name;
+
+    user_name = new Vue({
+        el: '#user_name',
+        data: {
+            name_value:""
+        }
+    });
+
+    user_name.name_value = "Vladimir";
+
+
+    let user_ID;
+        user_ID = new Vue({
+            el: '#user_ID',
+            data: {
+                ID_value:""
+            }
+        });
+
+       user_ID.ID_value = '12345';
+
+    let delivery_list;
+    delivery_list = new Vue({
+        el: '#delivery_list',
+        data: {
+            delivery_points:"default"
+        }
+    });
+
+    delivery_list.delivery_points = 'default';
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+
+</html>

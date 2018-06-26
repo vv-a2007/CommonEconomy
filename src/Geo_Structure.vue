@@ -1,6 +1,8 @@
+import geoStructureComp from "./geostructure.vue";
 
 new Vue({
-    el:"#geostructure"
+    el:"#geostructure",
+    components:{geoStructure:geoStructureComp}
 });
 
 let user;
