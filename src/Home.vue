@@ -1,9 +1,7 @@
 <template>
-    <div class="container-fluid homePage">
-        <div class="row">
-          <div class=col-lg-12"">
+    <div class="row">
+        <div class="row col-lg-12 ">
             <span>Home Page</span>
-          </div>
         </div>
     </div>
 </template>
@@ -14,6 +12,6 @@
     }
 </script>
 
-<style scoped>
+<style>
 
 </style>

@@ -1,7 +1,6 @@
 <template>
-
- <div class="container-fluid">
-    <div class="row">
+  <div>
+      <div class="row">
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-12 ">
@@ -26,8 +25,7 @@
     <div class="row">
         <geography-tree id="geostructure"></geography-tree>>
     </div>
- </div>
-
+  </div>
 </template>
 
 <script>
@@ -91,6 +89,6 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style>
 
 </style>

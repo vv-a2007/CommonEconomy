@@ -1,5 +1,4 @@
 <template>
-    <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
@@ -87,7 +86,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
 </template>
 
@@ -136,6 +135,6 @@
     }
 </script>
 
-<style scoped>
+<style>
 
 </style>
