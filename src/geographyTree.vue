@@ -10,7 +10,7 @@
     import geoItemComp from './geoitem.vue'
 
     export default {
-
+        name: 'geographyTree',
         data(){
             return {
                 loadUrl:"",

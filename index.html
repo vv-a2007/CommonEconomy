@@ -25,64 +25,7 @@
 </head>
 
 <body>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-8">
-        <ul class="nav nav-pills ">
-          <li class="nav-item"><a class="nav-link active " href="./index.html">Main</a></li>
-          <li class="nav-item"><a class="nav-link" href="./src/users_orders.html">User orders</a></li>
-          <li class="nav-item "><a class="nav-link " href="./src/sites.html">Sites</a></li>
-          <li class="nav-item" ><a class="nav-link" href="">Delivery points</a></li>
-          <li class="nav-item" ><a class="nav-link" href="./src/Geography.html">Geography</a></li>
-          <li class="nav-item" ><a class="nav-link" href="./src/Geo_structure.html">Geo-Structure</a></li>
-        </ul>
-        </div>
-        <div class="col-lg-4">
-            <div class="row">
-                    <div class="col-lg-6 "><span> User name : </span><span id="user_name">{{ name_value }}</span></div>
-                    <div class="col-lg-6"><span> User ID :</span><span id="user_ID"> {{ ID_value }}</span> </div>
-            </div>
-        </div>
-    </div>
-
-
-        <div class="col-lg-12">
-            <div class="row">
-
-            </div>
-        </div>
-</div>
-
-
-<script>
-
-    Vue.productionTip = false;
-
-    let user_name;
-
-    user_name = new Vue({
-        el: '#user_name',
-        data: {
-            name_value:""
-        }
-    });
-
-    user_name.name_value = "Vladimir";
-
-
-    let user_ID;
-    user_ID = new Vue({
-        el: '#user_ID',
-        data: {
-            ID_value:""
-        }
-    });
-
-    user_ID.ID_value = '12345';
-
-
-
-</script>
+    <div id="app"></div>
+    <script src="./dist/build.js"></script>
 </body>
-
 </html>
