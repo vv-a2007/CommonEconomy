@@ -1,7 +1,8 @@
 <template>
-    <div class="col-lg-12">
-        <span>GeoStructure : </span>
-        <span>{{mes}}</span>
+    <div class="row">
+        <div class="col-lg-12">
+             <geo-item></geo-item>
+        </div>
     </div>
 </template>
 
@@ -11,23 +12,25 @@
 
     export default {
         name: 'geographyTree',
-        data(){
+        data() {
             return {
-                loadUrl:"",
-                geoArray:[],
-                mes:"Load start"
-
+                geoArray: [],
+                mes:""
             }
         },
-        components: { geoItem:geoItemComp},
+        components: {geoItem: geoItemComp},
 
-        methods : {
 
-            DDD_created() {
-                let jqxhr = $.get(this.loadUrl, "json");
+        mounted() {this.UpdateTree()},
+
+        beforeUpdate() {},
+
+        methods: {
+            UpdateTree (){
+                let link = this;
+                let jqxhr = $.get("http://ce.my/Get_geo_tree.php", "json");
                 jqxhr.done(function () {
                     try {
-                        let geoArray = [];
                         let options = JSON.parse(jqxhr.responseText);
                         let count_root_element = 0;
                         let number_root = 0;
@@ -84,40 +87,35 @@
 
                         if (count_root_element < 2) {
 
-                            geoArray = return_tree(root_id);
-                            for (let i = 0; i < geoArray.length; i++) {
-                                for (let z = 0; z < geoArray[i].length; z++) {
+                            link.geoArray = return_tree(root_id);
+                            for (let i = 0; i < link.geoArray.length; i++) {
+                                for (let z = 0; z < link.geoArray[i].length; z++) {
                                     let newGeo = new Vue({render: h => h(GeoItem)});
-                                    newGeo.$data.id = geoArray[i][z]['id'];
-                                    newGeo.$data.parent_id = geoArray[i][z]['id'];
-                                    newGeo.$data.geoOption_id = geoArray[i][z]['id_option'];
+                                    newGeo.$data.id = link.geoArray[i][z]['id'];
+                                    newGeo.$data.parent_id = link.geoArray[i][z]['id'];
+                                    newGeo.$data.geoOption_id = link.geoArray[i][z]['id_option'];
 
-                                    geoArray[i][z] = newGeo;
+                                    link.geoArray[i][z] = newGeo;
                                 }
                             }
 
                             return true;
 
                         } else {
-                            this.mes = "More then one root elements, wrong data";
+                            link.mes = "More then one root elements, wrong data";
                             return (false);
                         }
                     }
                     catch (e) {
-                        this.mes = "SERVER not working, try later";
+                        link.mes = "SERVER not working, try later";
                         return (false);
                     }
                 });
                 jqxhr.fail(function () {
-                    this.mes = "SERVER not available, try later";
+                    link.mes = "SERVER not available, try later";
                     return (false);
-                })
-            },
-
-            DDD_beforeUpdate() {
-            }
+                })}
         }
-
     }
 </script>
 

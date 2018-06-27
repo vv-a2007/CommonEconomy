@@ -6,16 +6,16 @@
  * Time: 14:26
  */
 global $mysqli;
+
 if (!headers_sent()) {
     header('Access-Control-Allow-Origin: *');
 }
+
 $mysqli = new mysqli("localhost:3306", "vladimiranokhin", "vladimir2071654", "SiteCollection");
 
 $answer = array ();
 
 $value = 0;
-$geo = "";
-$answer[$value] = $geo;
 
 $query = "SELECT * FROM geo_elements ORDER BY geo_name";
 $res = $mysqli->query($query);
