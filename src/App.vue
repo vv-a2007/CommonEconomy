@@ -4,7 +4,7 @@
         <div class="col-lg-10">
                 <ul class="nav nav-pills">
                     <router-link tag="a" class="nav-item nav-link" exact  to="/" active-class="active">Home</router-link>
-                    <router-link tag="a" class="nav-item nav-link" exact  to="/userorders" active-class="active">Geography</router-link>
+                    <router-link tag="a" class="nav-item nav-link" exact  to="/userorders" active-class="active">User Orders</router-link>
                     <router-link tag="a" class="nav-item nav-link" exact  to="/sites" active-class="active">Sites</router-link>
                     <router-link tag="a" class="nav-item nav-link" exact  to="/geographylist" active-class="active">Geography</router-link>
                     <router-link tag="a" class="nav-item nav-link" exact  to="/geostructure" active-class="active">Geo-Structure</router-link>

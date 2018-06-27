@@ -1,6 +1,5 @@
 <template>
     <div class="geographyItem">
-
         <div v-if="mes!==''" class="row">
             <div  class="col-lg-12 ">
                 <span>Message:  </span>
@@ -15,9 +14,9 @@
                 <span class="full_width" v-bind:style="'color:mediumblue'" >{{itemName}}</span>
             </div>
             <div class="col-lg-4 ">
-                <select  v-model.lazy="selected" class="dropdown full_width" @:change="OnChangeBox" name="select_in_box">
+                <select  v-model.lazy="selected" class="dropdown full_width" v-on:change="OnChangeBox" name="select_in_box">
                     <option disabled value="">Select from ....</option>
-                    <option v-for="option in options" :value="option.value" v:key="option.value">
+                    <option v-for="option in options" :value="option.value" v-bind:key="option.value">
                         {{option.text}}
                     </option>
                 </select>
@@ -28,18 +27,17 @@
                         type="text"
                         class="new_item full_width"
                         v-bind:text="new_item">
+            </div>
+            <div class="col-lg-1 ">
+                <button  class="button_add, full_width" v-on:click="AddInBox" :style="'background-color:lime'" > New </button>
+            </div>
+            <div class="col-lg-1 ">
+                <button  v-show="!edit_flag" class="button_edit_off full_width" v-on:click="EditOn" :style="'background-color:gold'" > Edit </button>
+                <button  v-show="edit_flag" class="button_edit_on full_width" v-on:click="EditInBox" :style="'background-color:yellow'" > Save </button>
+            </div>
 
-            </div>
             <div class="col-lg-1 ">
-                <button  class="button_add, full_width" @:click="AddInBox" :style="'background-color:lime'" > New </button>
-            </div>
-            <div class="col-lg-1 ">
-                <button  v-show="!edit_flag" class="button_edit_off full_width" @:click="EditOn" :style="'background-color:gold'" > Edit </button>
-                <button  v-show="edit_flag" class="button_edit_on full_width" @:click="EditInBox" :style="'background-color:yellow'" > Save </button>
-            </div>
-
-            <div class="col-lg-1 ">
-                <button class="button_del full_width" @:click="ClearFromBox" :style="'background-color:tomato'"> Delete </button>
+                <button class="button_del full_width" v-on:click="ClearFromBox" :style="'background-color:tomato'"> Delete </button>
             </div>
         </div>
     </div>
@@ -72,12 +70,13 @@
                 parent:null,
                 full_loaded:false,
                 filter_id:0,
-                edit_flag:false
+                edit_flag:false,
+                max_count_trying:5
 
             }
         },
 
-        created () { this.OnStartBox() },
+        mounted () { this.OnStartBox() },
 
         methods : {
 
@@ -100,13 +99,14 @@
                                 try {
 
                                     link.id_current = link.options.find(unit => unit.value === link.selected).id_item;
-                                    count_trying_items = max_count_trying;
+                                    count_trying_items = link.max_count_trying;
                                     link.full_loaded = true;
                                     link.mes = "";
                                 }
                                 catch (e) {
                                     link.id_current = 0;
                                     sessionStorage.setItem("select_" + link.itemName, "");
+                                    link.full_loaded = true;
                                 }
 
                                 for (let i = 0; i < link.child.length; i++) {
@@ -123,7 +123,7 @@
                         }
                         catch (e) {
                             link.mes = "Try connecting to SERVER ";
-                            if (count_trying_items < max_count_trying) {
+                            if (count_trying_items < link.max_count_trying) {
                                 count_trying_items++;
                                 link.full_loaded = false;
                                 Init_list_box(start, link, filter_id);
@@ -136,7 +136,7 @@
                     });
                     jqxhr.fail(function () {
                         link.mes = "Try connecting to SERVER ";
-                        if (count_trying_items < max_count_trying) {
+                        if (count_trying_items < link.max_count_trying) {
                             count_trying_items++;
                             link.full_loaded = false;
                             Init_list_box(start, link, filter_id);
@@ -160,7 +160,7 @@
                     Init_list_box(link.startUrl, link, link.filter_id);
 
                     for (let i=0; i<link.child.length; i++) {
-                        if ((link.child[i] !== null) && (count_trying_items = max_count_trying)) {
+                        if ((link.child[i] !== null) && (count_trying_items = this.max_count_trying)) {
                             link.child[i].filter_id = link.id_current;
                             link.child[i].OnStartBox();
                         }
@@ -173,7 +173,7 @@
                 if (this.selected !== null) {
 
                     sessionStorage.setItem("select_"+this.itemName,this.selected);
-                    for (i=0; i<this.child.length; i++) {
+                    for (let i=0; i<this.child.length; i++) {
                         if (this.child[i] !== null) {
                             sessionStorage.setItem("select_" + this.child[i].itemName, "");
                         }
@@ -349,8 +349,6 @@
                     let item=this.selected;
                     Del_item(item,link)
                 }
-
-
 
             }
         }

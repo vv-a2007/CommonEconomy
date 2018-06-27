@@ -9,7 +9,7 @@ import geographyList from "./geographyList.vue"
 import geographyTree from "./geographyTree.vue"
 import geoStructure from "./geoStructure.vue"
 import geoItemComp from './geoitem.vue'
-import sites from './Sites.vue'
+import Sites from './Sites.vue'
 import userOrders from './userOrders.vue'
 
 
@@ -23,10 +23,14 @@ Vue.component('geography-tree', geographyTree);
 Vue.component('geo-structure', geoStructure);
 Vue.component('geo-item', geoItemComp);
 Vue.component('user-orders', userOrders);
-Vue.component('sites-list', sites);
+Vue.component('sites-list', Sites);
 
 new Vue({
     el: "#app",
     render: h => h(App),
-    router
+    router,
+    components:{homePage, geographyList, geographyTree, geoStructure, geoItemComp, Sites}
 });
+
+
+
