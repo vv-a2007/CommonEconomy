@@ -2,9 +2,9 @@
     <div class="row geoitem">
         <span  class="col-lg-12 geoName">{{geoName}}</span>
         <span v-show="!choiseMode" class="col-lg-10 geoOption">{{geoOption}}</span>
-        <button v-show="(!choiseMode && geoOption_id===0)" class="col-lg-2 choiseButton" v-on:click.stop="'choiseMode=true'">...</button>
-        <select v-show="choiseMode" class="col-lg-12 choiseList" v-on:change="choiseOption">
-          <option v-show="option in listOptions" :geoOption_id="option.id" :geoOption="option.text" v:key="options.id">{{option.text}}</option>
+        <button v-show="geoOption_id===0" class="col-lg-2 choiseButton" v-on:click.stop="'choiseMode=true'">...</button>
+        <select v-show="choiseMode" class="col-lg-12 dropdown unpadding choiseList" v-on:change="choiseOption">
+          <option v-for="item in listOptions"  class="dropdown-item" v:key="item.id">{{item.text}}</option>
         </select>
     </div>
 </template>

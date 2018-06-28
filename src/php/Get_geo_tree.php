@@ -17,7 +17,7 @@ $answer = array ();
 
 $value = 0;
 
-$query = "SELECT geo_tree.*, geo_elements.geo_name, geo_elements.table_name FROM geo_tree JOIN geo_elements ON geo_tree.id_geo_element=geo_elements.id ORDER BY id_parent;";
+$query = "SELECT geo_tree.*, geo_elements.geo_name, geo_elements.table_name FROM geo_tree JOIN geo_elements ON geo_tree.id_geo_element=geo_elements.id ORDER BY id_parent, id_option;";
 $res = $mysqli->query($query);
 
 if ($res !== FALSE) {
@@ -31,6 +31,8 @@ if ($res !== FALSE) {
            if ($row1 = $res->fetch_assoc()) { $answer[$value]['id_option']=$row['id_option']; $answer[$value]['name_option']=$row1['name'];}
               else {$answer[$value]['id_option']=0; $answer[$value]['name_option']="";}
         }
+        else { $answer[$value]['id_option']=0; }
+
         $answer[$value]['id'] = $row['id'];
         $answer[$value]['id_geo_element'] = $row['id_geo_element'];
         $answer[$value]['id_parent'] = $row['id_parent'];
@@ -40,7 +42,7 @@ if ($res !== FALSE) {
     }
 }
 
-$json_string = json_encode($answer);
+$json_string = json_encode($answer, JSON_NUMERIC_CHECK);
 
 echo $json_string;
 

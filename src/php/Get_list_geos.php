@@ -25,6 +25,7 @@ if ($res !== FALSE) {
     $res->data_seek(0);
 
     while ($row = $res->fetch_assoc()) {
+
         $answer[$value]['id'] = $row['id'];
         $answer[$value]['geo_name'] = $row['geo_name'];
         $answer[$value]['table_name'] = $row['table_name'];
@@ -33,7 +34,7 @@ if ($res !== FALSE) {
     }
 }
 
-$json_string = json_encode($answer);
+$json_string = json_encode($answer, JSON_NUMERIC_CHECK);
 
 echo $json_string;
 

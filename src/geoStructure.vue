@@ -22,9 +22,7 @@
             <button v-on:click="mes = ''">ok</button>
         </div>
     </div>
-    <div class="row">
         <geography-tree></geography-tree>>
-    </div>
   </div>
 </template>
 
@@ -68,8 +66,8 @@ export default {
                                                 geoTable : options[i]['table_name'],
                                                 value : i
                                               };
-
                         }
+                        this.mes = "";
                         return (true);
                     }
                     catch (e) {
