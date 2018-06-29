@@ -22,6 +22,10 @@
         },
         components: {geoItem: geoItemComp},
 
+        watch: {
+            // при изменениях маршрута запрашиваем данные снова
+            '$route':'UpdateTree(this)'},
+
 
         mounted() {this.UpdateTree(this)},
 

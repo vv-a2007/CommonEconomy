@@ -5,7 +5,7 @@ import geoStructure from "../geoStructure.vue"
 import userOrders from '../userOrders'
 import sites from '../Sites'
 
-
+Vue.use(VueRouter);
 
 
 export default new VueRouter ({

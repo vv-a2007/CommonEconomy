@@ -2,13 +2,12 @@
     <div>
       <div class="row">
         <div class="col-lg-10">
-                <ul class="nav nav-pills">
-                    <router-link tag="a" class="nav-item nav-link" exact  to="/" active-class="active">Home</router-link>
-                    <router-link tag="a" class="nav-item nav-link" exact  to="/userorders" active-class="active">User Orders</router-link>
-                    <router-link tag="a" class="nav-item nav-link" exact  to="/sites" active-class="active">Sites</router-link>
-                    <router-link tag="a" class="nav-item nav-link" exact  to="/geographylist" active-class="active">Geography</router-link>
-                    <router-link tag="a" class="nav-item nav-link" exact  to="/geostructure" active-class="active">Geo-Structure</router-link>
-                </ul>
+                <b-nav pills>
+                    <b-nav-item  exact to="/">Home</b-nav-item>
+                    <b-nav-item   to="/userorders">User Orders</b-nav-item>
+                    <b-nav-item   to="/geographylist">Geography</b-nav-item>
+                    <b-nav-item   to="/geostructure">Geo-Structure</b-nav-item>
+                </b-nav>
           </div>
           <div class="col-lg-2">
                 <div class="row">
@@ -41,3 +40,5 @@
 <style>
 
 </style>
+
+<!-- <router-link tag="li" class="nav-item nav-link"  to="/sites" active-class="active">Sites</router-link> -->

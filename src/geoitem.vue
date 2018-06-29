@@ -3,8 +3,8 @@
         <span  class="col-lg-12 geoName">{{geoName}}</span>
         <span v-show="!choiseMode" class="col-lg-10 geoOption">{{geoOption}}</span>
         <button v-show="geoOption_id===0" class="col-lg-2 choiseButton" v-on:click.stop="'choiseMode=true'">...</button>
-        <select v-show="choiseMode" class="col-lg-12 dropdown unpadding choiseList" v-on:change="choiseOption">
-          <option v-for="item in listOptions"  class="dropdown-item" v:key="item.id">{{item.text}}</option>
+        <select v-show="choiseMode" class="col-lg-12 dropdown unpadding choiceList" v-on:change="choiceOption">
+          <option v-for="item in listOptions"  class="dropdown-item" :key="item.id">{{item.text}}</option>
         </select>
     </div>
 </template>
@@ -27,7 +27,7 @@
         },
  //       mounted:{},
         methods:{
-           choiseOption() {
+           choiceOption() {
                this.$emit('addOptionGeo',[this.id,this.geoOption_id]);
                choiseMode=true;
                geoOption="";

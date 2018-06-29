@@ -4,9 +4,9 @@
         <div class="col-lg-12">
             <div class="row">
                 <div class="col-lg-12 ">
-                    <ul id="geo" class="nav nav-pills">
-                        <li  v-for="item in geoList" class="nav-item" :value="item.value" @click.prevent="selectGeo($event)"><a class="nav-link" :value="item.value" href="">{{item.geoname}}</a></li>
-                    </ul>
+                    <b-nav id="geo" pills>
+                        <b-nav-item  v-for="item in geoList"  :key="item.value" :value="item.value" @click.prevent="selectGeo($event)">{{item.geoname}}</b-nav-item>
+                    </b-nav>
                 </div>
                 <div class="row">
                     <div class="col-lg-12" id="basic-grid"></div>
@@ -49,6 +49,10 @@ export default {
                }
      },
 
+    watch: {
+        // при изменениях маршрута запрашиваем данные снова
+        '$route':'refresh_list'},
+
     mounted() {this.refresh_list()},
 
     methods: {
@@ -82,11 +86,11 @@ export default {
             })
         },
 
-  //      selectGeo : function ($event) {
-  //          this.activGeo = event.target.getAttribute("value");
-  //          $("#geo a").removeClass("active");
-  //          event.target.setAttribute("class","nav-link active");
-  //      }
+        selectGeo : function ($event) {
+            this.activGeo = event.target.getAttribute("value");
+            $("#geo a").removeClass("active");
+            event.target.setAttribute("class","nav-link active");
+        }
     }
 }
 
