@@ -30,6 +30,6 @@ export default new VueRouter ({
             path:'/geostructure',
             component: geoStructure
         }
-        ],
+    ],
     mode: 'history'
 })

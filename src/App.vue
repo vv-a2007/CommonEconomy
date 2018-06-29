@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
       <div class="row">
         <div class="col-lg-10">
                 <b-nav pills>
@@ -28,6 +28,7 @@
 
 <script>
     export default {
+        name: 'App',
         data () {
             return {
                 name_value: "Vladimir",
