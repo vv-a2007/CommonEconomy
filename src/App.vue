@@ -2,11 +2,11 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10">
-                <b-nav pills>
-                    <b-nav-item  exact to="/">Home</b-nav-item>
-                    <b-nav-item   to="/userorders">User Orders</b-nav-item>
-                    <b-nav-item   to="/geographylist">Geography</b-nav-item>
-                    <b-nav-item   to="/geostructure">Geo-Structure</b-nav-item>
+                <b-nav justified pills>
+                    <b-nav-item :to="'/'"exact >Home</b-nav-item>
+                    <b-nav-item :to="'userorders'">User Orders</b-nav-item>
+                    <b-nav-item :to="'geographylist'">Geography</b-nav-item>
+                    <b-nav-item :to="'geostructure'">Geo-Structure</b-nav-item>
                 </b-nav>
           </div>
           <div class="col-lg-2">

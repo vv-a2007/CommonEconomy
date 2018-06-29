@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import App from './App.vue'
 import VueRouter from 'vue-router'
 import router from './routers/routes'
+import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -15,9 +15,9 @@ import userOrders from './userOrders.vue'
 
 
 Vue.productionTip = false;
-
-Vue.use(VueRouter);
 Vue.use(BootstrapVue);
+Vue.use(VueRouter);
+
 
 Vue.component('homePage', homePage);
 Vue.component('geography-list', geographyList);

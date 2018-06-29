@@ -15,19 +15,19 @@ export default new VueRouter ({
             component: homePage
         },
         {
-            path:'/userorders',
+            path:'userorders',
             component: userOrders
         },
         {
-            path:'/sites',
+            path:'sites',
             component: sites
         },
         {
-            path:'/geographylist',
+            path:'geographylist',
             component: geographyList
         },
         {
-            path:'/geostructure',
+            path:'geostructure',
             component: geoStructure
         }
     ],
