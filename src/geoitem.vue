@@ -1,43 +1,55 @@
 <template>
-    <div class="row geoitem">
-        <span  class="col-lg-12 geoName">{{geoName}}</span>
-        <span v-show="!choiseMode" class="col-lg-10 geoOption">{{geoOption}}</span>
-        <button v-show="geoOption_id===0" class="col-lg-2 choiseButton" v-on:click.stop="'choiseMode=true'">...</button>
-        <select v-show="choiseMode" class="col-lg-12 dropdown unpadding choiceList" v-on:change="choiceOption">
-          <option v-for="item in listOptions"  class="dropdown-item" :key="item.id">{{item.text}}</option>
-        </select>
-    </div>
+        <div class="col-lg-1">
+            <div class="row">
+            <div v-if="id_geo!==0" class="col-lg-12 geoitem">
+                <div class="row">
+                   <span  class="col-lg-12 geoName" :bind="geoName">{{geoName}}</span>
+                </div>
+                <div class="row">
+                  <b-select  v-model="geoOption_id" :options="listOptions"  class="col-lg-12 dropdown unpadding" v-on:change="choiceOption"></b-select>
+                </div>
+                <div class="row">
+                 <button  class="col-lg-2 addOptionButton" v-on:click.stop="addOption">∆</button>
+                 <button v-show="geoOption_id === 0" class="col-lg-2 pluseButton" v-on:click.stop="plusItem">+</button>
+                 <button  class="col-lg-2 delnButton" v-on:click.stop="delItem">x</button>
+                </div>
+
+            </div>
+         </div>
+        </div>
 </template>
 
 <script>
     export default {
-          name: "geoItem",
- //       props:{startListOptions:Array, startParentId:Number},
+          name: "geoItemComp",
+          props:{'_id_geo' : Number, '_geoName' : String},
+  //        geoOption:String, geoOption_id:Number, listOptions:Array[{id:Number,text:String}], parent_id:Number},
         data () {
             return {
-                id: 0,
-                geoName: "default",
-                geoOption: "default",
+                id_geo: this._id_geo,
+                geoName : this._geoName,
                 geoOption_id: 0,
-                listOptions:[{id:0,
-                              text:""}],
+                listOptions:[{text:"any", value:0}],
+                geoOption: "",
                 parent_id: 0,
-                choiseMode:false
+                choiceMode:false,
+
             }
         },
- //       mounted:{},
+
+        //       mounted:{},
         methods:{
            choiceOption() {
-               this.$emit('addOptionGeo',[this.id,this.geoOption_id]);
-               choiseMode=true;
-               geoOption="";
-               geoOption_id=0
-           }
+               this.$emit('addOptionGeo', [this.id_geo, this.geoOption_id]);
+           },
+         addOption (){},
+         plusItem () {}  ,
+         delItem (){}
         }
     }
 </script>
 
 <style scoped>
-    .geoitem {border:2px ;
+    .geoitem {border-style:solid; border-width:1px ;
                      border-color:black}
 </style>

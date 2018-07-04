@@ -1,28 +1,27 @@
 <template>
   <div>
       <div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-lg-12 ">
-                    <b-nav id="geo" pills>
-                        <b-nav-item  v-for="item in geoList"  :key="item.value" :value="item.value" @click.prevent="selectGeo($event)">{{item.geoname}}</b-nav-item>
+          <div class="col-lg-12">
+                    <b-nav pills>
+                        <b-nav-item v-for="item in geoList"  :key="item.value" :value="item.value" @click="selectGeo($event)">{{item.geoname}}</b-nav-item>
                     </b-nav>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12" id="basic-grid"></div>
-                </div>
-            </div>
+           </div>
         </div>
-    </div>
-    <div v-if=" mes!=='' " class="row" id="message" >
-        <div  class="col-lg-12 ">
+   <div class="row">
+          <div class="col-lg-12"><pre> </pre></div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12">
+          <div v-show=" mes!=='' " class="row" >
             <span> Message:  </span>
             <span :style="'color:red'">{{mes}}</span>
             <span>       </span>
             <button v-on:click="mes = ''">ok</button>
         </div>
-    </div>
-        <geography-tree></geography-tree>>
+      </div>
+   </div>
+
+     <geography-tree></geography-tree>
   </div>
 </template>
 
@@ -39,13 +38,13 @@ export default {
     data() {
         return {
                 geoList:[{
-                          geoname:"Geography structures",
+                          geoname:"",
                           geoId:0,
                           geoTable:"",
                           value:0
                         }],
                 activGeo:0,
-                mes:"Start loading ....."
+                mes:""
                }
      },
 
@@ -53,12 +52,15 @@ export default {
         // при изменениях маршрута запрашиваем данные снова
         '$route':'refresh_list'},
 
-    mounted() {this.refresh_list()},
+    created() {
+        this.refresh_list(this)
+    },
 
     methods: {
 
-        refresh_list: function () {
-            let link = this;
+        refresh_list: function ($this) {
+            let link = $this;
+            this.mes = "Starting loading ...";
             let jqxhr = $.get("http://ce.my/Get_list_geos.php", "json");
             jqxhr.done(function () {
                     try {
@@ -71,7 +73,8 @@ export default {
                                                 value : i
                                               };
                         }
-                        this.mes = "";
+
+                        link.mes = "";
                         return (true);
                     }
                     catch (e) {

@@ -1,29 +1,30 @@
 <template>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10">
+    <b-container>
+      <b-row>
+        <b-col md="10">
                 <b-nav justified pills>
-                    <b-nav-item :to="'/'"exact >Home</b-nav-item>
-                    <b-nav-item :to="'userorders'">User Orders</b-nav-item>
-                    <b-nav-item :to="'geographylist'">Geography</b-nav-item>
-                    <b-nav-item :to="'geostructure'">Geo-Structure</b-nav-item>
+                    <b-nav-item  :to="'/'" exact >Home</b-nav-item>
+                    <b-nav-item  :to="'/userorders'" >User Orders</b-nav-item>
+                    <b-nav-item  :to="'/geographylist'">Geography</b-nav-item>
+                    <b-nav-item  :to="'/geostructure'">Geo-Structure</b-nav-item>
+                    <b-nav-item  :to="'/delivery'">Delivery Points</b-nav-item>
                 </b-nav>
-          </div>
-          <div class="col-lg-2">
-                <div class="row">
-                    <div class="col-lg-12 "><span> User name : </span><span>{{ name_value }}</span></div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12"><span> User ID :</span><span> {{ ID_value }}</span> </div>
-                </div>
-           </div>
-        </div>
+        </b-col>
+          <b-col md="2">
+                <b-row >
+                    <b-col md="12"><span> User name : </span><span>{{name_value}}</span></b-col>
+                </b-row>
+                <b-row class="row">
+                    <b-col md="12"><span> User ID :</span><span> {{ID_value}}</span> </b-col>
+                </b-row>
+           </b-col>
+      </b-row>
 
-        <div class="row">
-            <div class="col-lg-12"><pre> </pre></div>
-        </div>
+        <b-row>
+            <b-col md="12"><pre> </pre></b-col>
+        </b-row>
         <router-view></router-view>
-    </div>
+    </b-container>
 </template>
 
 <script>
@@ -32,7 +33,7 @@
         data () {
             return {
                 name_value: "Vladimir",
-                ID_value:"12345"
+                ID_value: "12345"
             }
         }
     };

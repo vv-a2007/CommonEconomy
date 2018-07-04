@@ -1,12 +1,12 @@
+import Vue from 'vue'
 import VueRouter from 'vue-router'
 import homePage from '../Home.vue'
 import geographyList from "../geographyList.vue"
 import geoStructure from "../geoStructure.vue"
 import userOrders from '../userOrders'
-import sites from '../Sites'
+import deliveryPoints from '../deliveryPoints.vue'
 
 Vue.use(VueRouter);
-
 
 export default new VueRouter ({
     routes:[
@@ -15,21 +15,21 @@ export default new VueRouter ({
             component: homePage
         },
         {
-            path:'userorders',
+            path:'/userorders',
             component: userOrders
         },
         {
-            path:'sites',
-            component: sites
-        },
-        {
-            path:'geographylist',
+            path:'/geographylist',
             component: geographyList
         },
         {
-            path:'geostructure',
+            path:'/geostructure',
             component: geoStructure
-        }
+        },
+        {
+            path:'/delivery',
+           component: deliveryPoints
+         }
     ],
     mode: 'history'
 })

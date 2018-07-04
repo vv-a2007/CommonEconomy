@@ -1,5 +1,4 @@
 <template>
-    <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="row newsite" id="newsite" >
@@ -202,15 +201,20 @@
                         </div>
                     </form>
                 </div>
-
             </div>
-        </div>
 </template>
 
 <script>
  export default {
 
      name: "Sites",
+
+     data () {
+
+
+
+
+     },
 
      created() {
          let all_regions = [];

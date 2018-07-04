@@ -16,9 +16,10 @@ $region = array ();
 
 $_GET['Content-Type'] = "application/json";
 
-$country_id = $_GET['filter_id'];
+$filter_id = $_GET['filter_id'];
+$filter_table = $_GET['filter_table'];
 
-$query = "SELECT * FROM regions WHERE id_country=".$country_id." ORDER BY region_name";
+$query = "SELECT * FROM regions WHERE (id_parent=".$filter_id." AND  parent_table=".$filter_table.") ORDER BY name";
 $res = $mysqli->query($query);
 
 if ($res !== FALSE) {
@@ -34,9 +35,9 @@ if ($res !== FALSE) {
 
     while ($row = $res->fetch_assoc()){
 
-        $region['text'] = $row['region_name'];
+        $region['text'] = $row['name'];
         $region['id_item'] = $row['id'];
-        $region['value'] = $row['region_name'];
+        $region['value'] = $row['name'];
         // $value++;
         $answer[] = $region;
 

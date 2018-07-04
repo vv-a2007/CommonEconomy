@@ -14,7 +14,7 @@ $mysqli = new mysqli("localhost:3306", "vladimiranokhin", "vladimir2071654", "Si
 $answer = array ();
 $country = array ();
 
-$query = "SELECT * FROM countries ORDER BY country_name";
+$query = "SELECT * FROM countries ORDER BY name";
 $res = $mysqli->query($query);
 
 if ($res !== FALSE) {
@@ -30,10 +30,10 @@ $answer[] = $country;
 
 while ($row = $res->fetch_assoc()){
 
-$country['text'] = $row['country_name'];
+$country['text'] = $row['name'];
 $country['id_item'] = $row['id'];
 //$country['value'] = $value;
-    $country['value'] = $row['country_name'];
+    $country['value'] = $row['name'];
 // $value++;
 
 $answer[] = $country;
